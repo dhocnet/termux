@@ -16,3 +16,6 @@ CATATAN:
 ========================
 
 Paket dikemas khusus untuk Termux
+
+
+Pengembang: https://github.com/neurobin/shc
