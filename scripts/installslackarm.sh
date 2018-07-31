@@ -22,21 +22,9 @@ ZW52LyBcCiAgICAtaSBIT01FPS9yb290IFwKICAgIFRFUk09IiRURVJNIiBcCiAgICBQUzE9J1ty
 b290QHNsYWNrd2FyZSBcd10jICcgXAogICAgTEFORz1lbl9VUy5VVEYtOCBcCiAgICBQQVRIPS9i
 aW46L3Vzci9iaW46L3NiaW46L3Vzci9zYmluIFwKICAgIC9iaW4vYmFzaCAtLWxvZ2luCg=="
 
-SELECT_ARCH=`uname -m`
-if [ $SELECT_ARCH == 'armv71' ]
-then
-    ARCH_SELECT="slackwarearm/slackwarearm-current/slackware"
-elif [ $SELECT_ARCH == "aarch64" ]
-then
-    ARCH_SELECT="slarm64/slarm64-current/slarm64"
-else
-    echo "\nArsitektur tidak terdeteksi!"
-    SETUP_BATAL
-fi
-
 SETUP_MULAI () {
     clear
-    echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n 1) wget \n 2) tar \n 3) proot \n 4) dialog \n"
+    echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n 1) wget \n 2) tar \n 3) proot \n 4) dialog \n "
     read -p 'Install program [Y/n]? ' ins_y
     if [ $ins_y == "n" ]
     then
@@ -59,7 +47,7 @@ SETUP_TERMUX () {
 
 SETUP_SELECT () {
     clear
-    echo "-- PILIH JENIS INSTALASI -- \n\n 1) Miniroot (default) - Perlu disk 500MB \n 2) Development - Perlu disk 4GB \n"
+    echo "-- PILIH JENIS INSTALASI -- \n \n 1) Miniroot (default) - Perlu disk 500MB \n 2) Development - Perlu disk 4GB \n "
     read -p "Pilihan (default: 1) [1/2]: " pilih_tipe
     if [ $pilih_tipe == '2' ]
     then
@@ -117,7 +105,21 @@ INSTALL_STATER () {
 
 CARA_PAKAI () {
     clear
-    echo "SELAMAT! Anda telah berhasil memasang Slackware Linux (current-$SELECT_ARCH) di perangkat Android.\n\nUntuk menjalankan, gunakan perintah: startslack\n\n"
+    echo "SELAMAT! Anda telah berhasil memasang Slackware Linux (current-$SELECT_ARCH) di perangkat Android.\n \n Untuk menjalankan, gunakan perintah: startslack \n \n "
 }
+
+
+SELECT_ARCH=`uname -m`
+if [ $SELECT_ARCH == 'armv71' ]
+then
+    ARCH_SELECT="slackwarearm/slackwarearm-current/slackware"
+elif [ $SELECT_ARCH == "aarch64" ]
+then
+    ARCH_SELECT="slarm64/slarm64-current/slarm64"
+else
+    clear
+    echo "Arsitektur tidak terdeteksi!"
+    SETUP_BATAL
+fi
 
 SETUP_MULAI
