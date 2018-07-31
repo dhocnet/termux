@@ -28,7 +28,7 @@ SETUP_MULAI () {
     clear
     echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n 1) wget \n 2) tar \n 3) proot \n 4) dialog \n"
     read -p 'Install program [Y/n]? ' ins_y
-    if [ $ins_y == "n" ]
+    if [ $ins_y = "n" ]
     then
         SETUP_BATAL
     else
@@ -111,7 +111,7 @@ CARA_PAKAI () {
 
 
 SELECT_ARCH=`uname -m`
-if [ $SELECT_ARCH == 'armv71' ]
+if [ $SELECT_ARCH == 'armv7l' ]
 then
     ARCH_SELECT="slackwarearm/slackwarearm-current/slackware"
     SETUP_MULAI
