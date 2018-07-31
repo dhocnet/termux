@@ -12,7 +12,7 @@
 shopt -s xpg_echo
 
 PKG_MINI="a/aaa_base a/aaa_elflibs a/aaa_terminfo a/acl a/attr a/bash a/bin a/btrfs-progs a/bzip2 a/coreutils a/dbus a/dcron a/devs a/dialog a/e2fsprogs a/ed a/etc a/file a/findutils a/hostname a/hwdata a/lbzip2 a/lvm2 a/less a/gawk a/gettext a/getty-ps a/glibc-solibs a/glibc-zoneinfo a/gptfdisk a/grep a/gzip a/jfsutils a/inotify-tools a/kmod a/lrzip a/lzip a/lzlib a/mtd-utils a/pkgtools a/procps-ng a/reiserfsprogs a/shadow a/sed a/sysklogd a/sysvinit a/sysvinit-scripts a/tar a/eudev a/libgudev a/usbutils a/util-linux a/vboot-utils a/which a/xfsprogs a/xz ap/groff ap/man-db ap/man-pages ap/nano ap/slackpkg d/perl n/openssl n/ca-certificates n/dhcpcd n/gnupg n/lftp n/libmnl n/network-scripts n/nfs-utils n/ntp n/iputils n/net-tools n/iproute2 n/openssh n/rpcbind n/libtirpc n/rsync n/telnet n/traceroute n/wget n/wpa_supplicant n/wireless-tools l/lzo l/libnl3 l/libidn l/libunistring l/mpfr l/ncurses l/pcre"
-INSTALLPKG_DL="https://mirrors.slackware.bg/slackware/slackware-current/source/a/pkgtools/scripts"
+INSTALLPKG_DL="https://raw.githubusercontent.com/dhocnet/termux/master/scripts/netinstall/slackware"
 INSTALL_SYS=$HOME/slackware/tmp/installpkg
 UPGRADE_SYS=$HOME/slackware/tmp/upgradepkg
 WGET_P=$HOME/slackware/tmp/pkg
@@ -26,7 +26,7 @@ aW46L3Vzci9iaW46L3NiaW46L3Vzci9zYmluIFwKICAgIC9iaW4vYmFzaCAtLWxvZ2luCg=="
 
 SETUP_MULAI () {
     clear
-    echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n 1) wget \n 2) coreutils \n 3) proot \n"
+    echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n\n 1) wget \n 2) coreutils \n 3) proot \n 4) util-linux \n 5) grep \n 6) Dialog \n 7) lzip \n"
     read -p 'Install program [Y/n]? ' ins_y
     if [ $ins_y == "n" ]
     then
@@ -42,15 +42,16 @@ SETUP_BATAL () {
 }
 
 SETUP_TERMUX () {
-    apt -y upgrade && apt -y install coreutils proot tar wget
+    apt -y upgrade && apt -y install grep coreutils lzip proot tar wget util-linux dialog
+    sleep 1
     SETUP_SELECT
 }
 
 SETUP_SELECT () {
     clear
     echo "-- PILIH JENIS INSTALASI -- \n\n 1) Miniroot (default) - Perlu disk 500MB \n 2) Development - Perlu disk 4GB \n"
-    read -p "Pilihan (default: 1) [1/2]: " pilih_tipe
-    if [ $pilih_tipe == '2' ]
+    read -p 'Pilihan (default: 1) [1/2]: ' pilih_tipe
+    if [ $pilih_tipe == "2" ]
     then
         touch $HOME/slackware/tmp/insDEV.y
     fi
@@ -61,7 +62,7 @@ INSTALL_DEFAULT () {
     clear
     mkdir -p $HOME/slackware/tmp/pkg
     echo "Mengunduh program installer: installpkg"
-    wget -c -t 0 $INSTALLPKG_DL/installpkg -O $WGET_P/../installpkg
+    wget -c -t 0 -P $WGET_P/../ $INSTALLPKG_DL/installpkg
     chmod +x $WGET_P/../installpkg
     for PKG_TODL in $PKG_MINI ; do
         wget -c -t 0 -T 10 -w 5 -P $WGET_P -nv ftp://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t?z
@@ -79,8 +80,8 @@ INSTALL_DEFAULT () {
 INSTALL_DEVEL () {
     clear
     PKG_DEVDIR="a ap d l t"
-    echo "Mengunduh program installer: upgradepkg"
-    wget -c -t 0 $INSTALLPKG_DL/upgradepkg -O $WGET_P/../upgradepkg
+    echo "Mengunduh program installer: upgradepkg, removepkg"
+    wget -c -t 0 -P $WGET_P/../ $INSTALLPKG_DL/{removepkg,upgradepkg}
     chmod +x $WGET_P/../upgradepkg
     for PKG_DEVDL in $PKG_DEVDIR ; do
         wget -c -t 0 -r -np -nd -nv -T 10 -w 5 -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
@@ -110,24 +111,24 @@ CARA_PAKAI () {
 }
 
 clear
-echo "\nSlackware ARM - NetInstall"
+echo "\nSlackware ARM - NetInstall\nInfo: https://github.com/dhocnet/termux/tree/master/scripts/netinstall/slackware"
 sleep 2
 
 SELECT_ARCH=`uname -m`
 if [ $SELECT_ARCH == 'armv7l' ]
 then
-    echo "\n\nTerdeteksi arsitektur ponsel; $SELECT_ARCH"
+    echo "\nTerdeteksi arsitektur ponsel; $SELECT_ARCH"
     ARCH_SELECT="slackwarearm/slackwarearm-current/slackware"
-    sleep 1
+    sleep 2
     SETUP_MULAI
 elif [ $SELECT_ARCH == "aarch64" ]
 then
-    echo "\n\nTerdeteksi arsitektur ponsel: $SELECT_ARCH"
+    echo "\nTerdeteksi arsitektur ponsel: $SELECT_ARCH"
     ARCH_SELECT="slarm64/slarm64-current/slarm64"
-    sleep 1
+    sleep 2
     SETUP_MULAI
 else
-    echo "\n\nArsitektur ponsel belum didukung!\nArsitektur: $SELECT_ARCH"
+    echo "\nArsitektur ponsel belum didukung!\nArsitektur: $SELECT_ARCH"
     sleep 3
     SETUP_BATAL
 fi
