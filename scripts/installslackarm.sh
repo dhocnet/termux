@@ -63,8 +63,8 @@ INSTALL_DEFAULT () {
     wget -c -t 0 $INSTALLPKG_DL/installpkg -O $WGET_P/../installpkg
     for PKG_TODL in $PKG_MINI ; do
         wget -c -t 0 -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t[gx]z
-        $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/$PKG_TODL-+([^-])-+([^-])-+([^-]).t[gx]z
     done
+    $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/*.t?z
     if [ -e $HOME/slackware/tmp/insDEV.y ]
     then
         rm $HOME/slackware/tmp/insDEV.y
