@@ -26,9 +26,9 @@ aW46L3Vzci9iaW46L3NiaW46L3Vzci9zYmluIFwKICAgIC9iaW4vYmFzaCAtLWxvZ2luCg=="
 
 SETUP_MULAI () {
     clear
-    echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n 1) wget \n 2) tar \n 3) proot \n 4) dialog \n"
+    echo "Anda membutuhkan beberapa program lain untuk instalasi Slackware-current ARM. Yaitu \n 1) wget \n 2) coreutils \n 3) proot \n"
     read -p 'Install program [Y/n]? ' ins_y
-    if [ $ins_y = "n" ]
+    if [ $ins_y == "n" ]
     then
         SETUP_BATAL
     else
@@ -42,7 +42,7 @@ SETUP_BATAL () {
 }
 
 SETUP_TERMUX () {
-    apt -y update && apt -y install dialog proot tar wget
+    apt -y update && apt -y install coreutils proot tar wget
     SETUP_SELECT
 }
 
@@ -50,7 +50,7 @@ SETUP_SELECT () {
     clear
     echo "-- PILIH JENIS INSTALASI -- \n\n 1) Miniroot (default) - Perlu disk 500MB \n 2) Development - Perlu disk 4GB \n"
     read -p "Pilihan (default: 1) [1/2]: " pilih_tipe
-    if [ $pilih_tipe = '2' ]
+    if [ $pilih_tipe == '2' ]
     then
         touch $HOME/slackware/tmp/insDEV.y
     fi
