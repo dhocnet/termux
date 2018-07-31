@@ -7,7 +7,7 @@
 # Blog          : https://blog.dhocnet.work
 # Kode sumber   : https://github.com/dhocnet/termux/scripts/
 #
-# Tanggal       :
+# Tanggal       : 31 Juli 2018
 
 shopt -s xpg_echo
 
@@ -42,7 +42,7 @@ SETUP_BATAL () {
 }
 
 SETUP_TERMUX () {
-    apt -y update && apt -y install coreutils proot tar wget
+    apt -y upgrade && apt -y install coreutils proot tar wget
     SETUP_SELECT
 }
 
@@ -64,7 +64,7 @@ INSTALL_DEFAULT () {
     wget -c -t 0 $INSTALLPKG_DL/installpkg -O $WGET_P/../installpkg
     chmod +x $WGET_P/../installpkg
     for PKG_TODL in $PKG_MINI ; do
-        wget -c -t 0 -P $WGET_P ftp://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t?z
+        wget -c -t 0 -T 10 -w 5 -P $WGET_P -nv ftp://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t?z
     done
     $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/*.t?z
     if [ -e $HOME/slackware/tmp/insDEV.y ]
@@ -83,7 +83,7 @@ INSTALL_DEVEL () {
     wget -c -t 0 $INSTALLPKG_DL/upgradepkg -O $WGET_P/../upgradepkg
     chmod +x $WGET_P/../upgradepkg
     for PKG_DEVDL in $PKG_DEVDIR ; do
-        wget -c -t 0 -r -np -nd -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
+        wget -c -t 0 -r -np -nd -nv -T 10 -w 5 -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
     done
     ROOT=$HOME/slackware
     $UPGRADE_SYS --install-new $WGET_P/*.t?z
@@ -109,18 +109,25 @@ CARA_PAKAI () {
     echo "SELAMAT! Anda telah berhasil memasang Slackware Linux (current-$SELECT_ARCH) di perangkat Android.\n\nUntuk menjalankan, gunakan perintah: startslack"
 }
 
+clear
+echo "\nSlackware ARM - NetInstall"
+sleep 2
 
 SELECT_ARCH=`uname -m`
 if [ $SELECT_ARCH == 'armv7l' ]
 then
+    echo "\n\nTerdeteksi arsitektur ponsel; $SELECT_ARCH"
     ARCH_SELECT="slackwarearm/slackwarearm-current/slackware"
+    sleep 1
     SETUP_MULAI
 elif [ $SELECT_ARCH == "aarch64" ]
 then
+    echo "\n\nTerdeteksi arsitektur ponsel: $SELECT_ARCH"
     ARCH_SELECT="slarm64/slarm64-current/slarm64"
+    sleep 1
     SETUP_MULAI
 else
-    echo "\nArsitektur tidak terdeteksi!"
+    echo "\n\nArsitektur ponsel belum didukung!\nArsitektur: $SELECT_ARCH"
     sleep 3
     SETUP_BATAL
 fi
