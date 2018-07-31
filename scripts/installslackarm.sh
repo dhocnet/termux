@@ -50,13 +50,11 @@ SETUP_SELECT () {
     clear
     echo "-- PILIH JENIS INSTALASI -- \n\n 1) Miniroot (default) - Perlu disk 500MB \n 2) Development - Perlu disk 4GB \n"
     read -p "Pilihan (default: 1) [1/2]: " pilih_tipe
-    if [ $pilih_tipe == '2' ]
+    if [ $pilih_tipe = '2' ]
     then
-        INSTALL_DEVEL
         touch $HOME/slackware/tmp/insDEV.y
-    else
-        INSTALL_DEFAULT
     fi
+    INSTALL_DEFAULT
 }
 
 INSTALL_DEFAULT () {
@@ -64,6 +62,7 @@ INSTALL_DEFAULT () {
     mkdir -p $HOME/slackware/tmp/pkg
     echo "Mengunduh program installer: installpkg"
     wget -c -t 0 $INSTALLPKG_DL/installpkg -O $WGET_P/../installpkg
+    chmod +x $WGET_P/../installpkg
     for PKG_TODL in $PKG_MINI ; do
         wget -c -t 0 -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t[gx]z
     done
@@ -82,6 +81,7 @@ INSTALL_DEVEL () {
     PKG_DEVDIR="a ap d l t"
     echo "Mengunduh program installer: upgradepkg"
     wget -c -t 0 $INSTALLPKG_DL/upgradepkg -O $WGET_P/../upgradepkg
+    chmod +x $WGET_P/../upgradepkg
     for PKG_DEVDL in $PKG_DEVDIR ; do
         wget -c -t 0 -r -np -nd -A t[xg]z -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
     done
