@@ -64,7 +64,7 @@ INSTALL_DEFAULT () {
     wget -c -t 0 $INSTALLPKG_DL/installpkg -O $WGET_P/../installpkg
     chmod +x $WGET_P/../installpkg
     for PKG_TODL in $PKG_MINI ; do
-        wget -c -t 0 -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t[gx]z
+        wget -c -t 0 -P $WGET_P ftp://mirrors.slackware.bg/$ARCH_SELECT/$PKG_TODL-*.t?z
     done
     $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/*.t?z
     if [ -e $HOME/slackware/tmp/insDEV.y ]
@@ -83,7 +83,7 @@ INSTALL_DEVEL () {
     wget -c -t 0 $INSTALLPKG_DL/upgradepkg -O $WGET_P/../upgradepkg
     chmod +x $WGET_P/../upgradepkg
     for PKG_DEVDL in $PKG_DEVDIR ; do
-        wget -c -t 0 -r -np -nd -A t[xg]z -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
+        wget -c -t 0 -r -np -nd -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
     done
     ROOT=$HOME/slackware
     $UPGRADE_SYS --install-new $WGET_P/*.t?z
@@ -120,7 +120,7 @@ then
     ARCH_SELECT="slarm64/slarm64-current/slarm64"
     SETUP_MULAI
 else
-    echo "Arsitektur tidak terdeteksi!"
+    echo "\nArsitektur tidak terdeteksi!"
     sleep 3
     SETUP_BATAL
 fi
