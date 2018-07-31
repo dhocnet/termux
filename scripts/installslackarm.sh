@@ -7,7 +7,7 @@
 # Blog          : https://blog.dhocnet.work
 # Kode sumber   : https://github.com/dhocnet/termux/scripts/
 #
-# Tanggal       :
+# Tanggal       : 31 Juli 2018
 
 PKG_MINI="a/aaa_base a/aaa_elflibs a/aaa_terminfo a/acl a/attr a/bash a/bin a/btrfs-progs a/bzip2 a/coreutils a/dbus a/dcron a/devs a/dialog a/e2fsprogs a/ed a/elvis a/etc a/file a/findutils a/hostname a/hwdata a/lbzip2 a/lvm2 a/less a/gawk a/gettext a/getty-ps a/glibc-solibs a/glibc-zoneinfo a/gptfdisk a/grep a/gzip a/kbd a/jfsutils a/inotify-tools a/kmod a/lrzip a/lzip a/lzlib a/mtd-utils a/pkgtools a/procps-ng a/reiserfsprogs a/shadow a/sed a/sysklogd a/sysvinit a/sysvinit-scripts a/tar a/eudev a/libgudev a/usbutils a/util-linux a/vboot-utils a/which a/xfsprogs a/xz ap/groff ap/man-db ap/man-pages ap/nano ap/slackpkg d/perl n/openssl n/ca-certificates n/dhcpcd n/gnupg n/lftp n/libmnl n/network-scripts n/nfs-utils n/ntp n/iputils n/net-tools n/iproute2 n/openssh n/rpcbind n/libtirpc n/rsync n/telnet n/traceroute n/wget n/wpa_supplicant n/wireless-tools l/lzo l/libnl3 l/libidn l/libunistring l/mpfr l/ncurses l/pcre"
 INSTALLPKG_DL="https://mirrors.slackware.bg/slackware/slackware-current/source/a/pkgtools/scripts"
