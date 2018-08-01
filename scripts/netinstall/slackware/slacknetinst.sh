@@ -150,6 +150,7 @@ SLPKG_INS () {
     clear
     echo "Memasang slpkg ..."
     wget -c -t 0 -q --show-progress -P $WGET_DL/../ $INSTALLPKG_DL/slpkginstall.sh
+    chmod +x $HOME/slackware/tmp/slpkginstall.sh
     sleep 2
     unset LD_PRELOAD
     proot \
