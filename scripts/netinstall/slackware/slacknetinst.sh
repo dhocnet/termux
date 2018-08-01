@@ -26,15 +26,6 @@ UPGRADE_SYS=$HOME/slackware/tmp/upgradepkg
 # download folder sementara
 WGET_P=$HOME/slackware/tmp/pkg
 
-# slackware chroot script
-SCRIPT_PEMICU="IyEvZGF0YS9kYXRhL2NvbS50ZXJtdXgvZmlsZXMvdXNyL2Jpbi9iYXNoCgp1bnNldCBMRF9QUkVM
-T0FECnByb290IFwKICAgIC0tbGluazJzeW1saW5rIFwKICAgIC1PIFwKICAgIC1yICRIT01FL3Ns
-YWNrd2FyZSBcCiAgICAtYiAvZGV2LyBcCiAgICAtYiAvc3lzLyBcCiAgICAtYiAvcHJvYy8gXAog
-ICAgLWIgL3N0b3JhZ2UvIFwKICAgIC1iICRIT01FIFwKICAgIC13IC9yb290IFwKICAgIC9iaW4v
-ZW52LyBcCiAgICAtaSBIT01FPS9yb290IFwKICAgIFRFUk09IiRURVJNIiBcCiAgICBQUzE9J1ty
-b290QHNsYWNrd2FyZSBcd10jICcgXAogICAgTEFORz1lbl9VUy5VVEYtOCBcCiAgICBQQVRIPS9i
-aW46L3Vzci9iaW46L3NiaW46L3Vzci9zYmluIFwKICAgIC9iaW4vYmFzaCAtLWxvZ2luCg=="
-
 SETUP_MULAI () {
     clear
     # konfirmasi instalasi paket yang dibutuhkan oleh slackware pkgtools
@@ -129,8 +120,8 @@ INSTALL_DEVEL () {
 INSTALL_STATER () {
     clear
     echo "Memasang script pemicu ..."
-    base64 -d < $SCRIPT_PEMICU > $HOME/../usr/bin/slackwarego
-    chmod +x $HOME/../usr/bin/startslack
+    wget -q --show-progress -P $HOME/../usr/bin/ https://github.com/dhocnet/termux/raw/master/scripts/launcher/slackwarego
+    chmod +x $HOME/../usr/bin/slackwarego
     echo "OK ..."
     clear
     echo "Membersihkan sisa-sisa instalasi ..."
@@ -149,7 +140,7 @@ CARA_PAKAI () {
     Blog    : https://blog.dhocnet.work\n
     Proyek  : https://github.com/dhocnet/termux\n\n
     01 Aggustus 2018, Denpasar, Bali\n\n
-    Untuk menjalankan, gunakan perintah: startslack\n\n"
+    Untuk menjalankan, gunakan perintah: slackwarego\n\n"
 }
 
 clear
