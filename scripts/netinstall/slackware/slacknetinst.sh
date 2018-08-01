@@ -40,7 +40,7 @@ SETUP_MULAI () {
     # konfirmasi instalasi paket yang dibutuhkan oleh slackware pkgtools
     echo "Anda membutuhkan beberapa program lain untuk \nmenyelesaikan instalasi Slackware-current ARM. Yaitu:\n\n 1) wget\n 2) coreutils\n 3) proot\n 4) util-linux\n 5) grep\n 6) Dialog\n 7) lzip\n"
     read -p 'Install program [Y/n]? ' ins_y
-    if [ $ins_y == "n" ]
+    if [ $ins_y = "n" ]
     then
         SETUP_BATAL
     else
@@ -65,7 +65,7 @@ SETUP_SELECT () {
     clear
     echo "PILIH JENIS INSTALASI\n\n 1) Miniroot (default) - Perlu disk 500MB\n 2) Development - Perlu disk 4GB\n"
     read -p 'Pilihan (default: 1) [1/2]: ' pilih_tipe
-    if [ $pilih_tipe == "2" ]
+    if [ $pilih_tipe = "2" ]
     then
         touch $HOME/slackware/tmp/insDEV.y
     fi
