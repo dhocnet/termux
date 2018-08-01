@@ -1,0 +1,20 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+unset LD_PRELOAD
+proot \
+    --link2symlink \
+    -O \
+    -r $HOME/slackware \
+    -b /dev/ \
+    -b /sys/ \
+    -b /proc/ \
+    -b /storage/ \
+    -b $HOME \
+    -w /root \
+    /bin/env/ \
+    -i HOME=/root \
+    TERM="$TERM" \
+    PS1='[root@slackware \w]# ' \
+    LANG=en_US.UTF-8 \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login
