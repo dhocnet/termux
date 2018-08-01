@@ -9,6 +9,7 @@
 # Kode sumber   : https://github.com/dhocnet/termux/scripts/
 #
 # Agustus, 01 2018
+shopt -s xpg_echo
 
 SBO_NOW=https://slackbuilds.org/slackbuilds/14.2/system/slpkg.tar.gz
 
@@ -26,6 +27,7 @@ then
 fi
 sleep 1
 # mengunduh pemaket slpkg
+WGETFLAGS="--no-check-certificate" slackpkg -dialog=off -default_answer=y install tar
 echo "Mengunduh script pemaket ..."
 cd /tmp/slpkg
 wget -c -t 0 -T 10 -w 5 -q --show-progress $SBO_NOW
