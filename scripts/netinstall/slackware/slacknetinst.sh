@@ -100,7 +100,7 @@ SETUP_SELECT () {
 
 INSTALL_DEFAULT () {
     clear
-    mkdir -p $HOME/slackware/tmp/pkg
+    mkdir -p $WGET_P
     echo "Mengunduh program installer: installpkg"
     wget -c -t 0 -P $WGET_P/../ -q --show-progress $INSTALLPKG_DL/installpkg
     chmod +x $WGET_P/../installpkg
