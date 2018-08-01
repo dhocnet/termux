@@ -35,7 +35,42 @@ SETUP_MULAI () {
     then
         SETUP_BATAL
     else
+        if [ -d $HOME/slackware ]
+        then
+            SETUP_RESUME
+        else
+            SETUP_TERMUX
+        fi
+    fi
+}
+
+SETUP_RESUME () {
+    clear
+    echo "Terdeteksi berkas slackware di sistem folder. Apakah Anda ingin melanjutkan proses instalasi?\n
+    Y - Lanjutkan
+    N - Install baru (hapus instalasi lama)"
+    read -p 'Lanjutkan atau install baru [Y/n]? ' SET_RES
+    if [ $SET_RES = "n" ]
+    then
+        clear
+        echo "Menghapus instalasi lama ..."
+        sleep 1
+        rm -rf $HOME/slackware
+        echo "OK."
+        sleep 2
         SETUP_TERMUX
+    else
+        clear
+        echo "Pilih tipe instalasi untuk dilanjutkan\n
+        1) Lanjutkan instalasi miniroot (default)
+        2) Upgrade Miniroot ke Development"
+        read -p 'Lanjutkan atau upgrade [1/2]? ' SET_UP
+        if [ $SET_UP = "2" ]
+        then
+            INSTALL_DEVEL
+        else
+            SETUP_SELECT
+        fi
     fi
 }
 
@@ -122,6 +157,7 @@ INSTALL_STATER () {
     echo "Memasang script pemicu ..."
     wget -q --show-progress -P $HOME/../usr/bin/ https://github.com/dhocnet/termux/raw/master/scripts/launcher/slackwarego
     chmod +x $HOME/../usr/bin/slackwarego
+    echo "nameserver 8.8.8.8" > $HOME/slackware/etc/resolv.conf
     echo "OK ..."
     clear
     echo "Membersihkan sisa-sisa instalasi ..."
@@ -129,57 +165,16 @@ INSTALL_STATER () {
     rm -vrf $HOME/slackware/tmp/*
     echo "OK ..."
     sleep 1
-    SLPKG_Q
-}
-
-SLPKG_Q () {
-    clear
-    echo "Apakah Anda ingin memasang program SLPKG?\nSLPKG berguna untuk memasang program dari SlackBuilds dan berbagai repositori lainnya\n"
-    read -p 'Install slpkg [Y/n]? ' slpkg_n
-    if [ $slpkg_n = "n" ]
-    then
-        echo "SLPKG tidak dipasang!\n"
-        sleep 2
-        CARA_PAKAI
-    else
-        SLPKG_INS
-    fi
-}
-
-SLPKG_INS () {
-    clear
-    echo "Memasang slpkg ..."
-    wget -c -t 0 -q --show-progress -P $WGET_DL/../ $INSTALLPKG_DL/slpkginstall.sh
-    chmod +x $HOME/slackware/tmp/slpkginstall.sh
-    sleep 2
-    unset LD_PRELOAD
-    proot \
-        --link2symlink \
-        -0 \
-        -r $HOME/slackware \
-        -b /dev/ \
-        -b /sys/ \
-        -b /proc/ \
-        -b /storage/ \
-        -b $HOME \
-        -w /root \
-        $HOME/slackware/bin/env \
-        -i HOME=/root \
-        TERM="$TERM" \
-        PS1='[root@slackware \w]# ' \
-        LANG=en_US.UTF-8 \
-        PATH=/bin:/usr/bin:/sbin:/usr/sbin \
-        /bin/bash --login /tmp/slpkginstall.sh
     CARA_PAKAI
 }
 
 CARA_PAKAI () {
     clear
     echo "SELAMAT! Anda telah berhasil memasang Slackware Linux (current-$SELECT_ARCH) di perangkat Android.\n\n
-    Oleh    : mongkeelutfi\n
-    Info    : mongkee@gmail.com\n
-    Blog    : https://blog.dhocnet.work\n
-    Proyek  : https://github.com/dhocnet/termux\n\n
+    Oleh    : mongkeelutfi
+    Info    : mongkee@gmail.com
+    Blog    : https://blog.dhocnet.work
+    Proyek  : https://github.com/dhocnet/termux\n
     01 Aggustus 2018, Denpasar, Bali\n\n
     Untuk menjalankan, gunakan perintah: slackwarego\n\n"
 }
