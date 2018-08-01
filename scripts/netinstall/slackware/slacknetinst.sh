@@ -140,7 +140,7 @@ INSTALL_DEVEL () {
     echo "OK.\n\nMengunduh paket Development:"
     chmod +x $WGET_P/../{removepkg,upgradepkg}
     sleep 1
-    apt -y install lftp
+    #apt -y install lftp
     for PKG_DEVDL in $PKG_DEVDIR ; do
         wget -c -t 0 -r -np -nd -q --show-progress -T 10 -w 5 -A '.txz' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
         #lftp -c 'open https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/ ; mirror -c -e $WGET_P'
@@ -165,6 +165,9 @@ INSTALL_STATER () {
     echo "Membersihkan sisa-sisa instalasi ..."
     sleep 1
     rm -vrf $HOME/slackware/tmp/*
+    # hemat penyimpanan internal dari program yang dipasang sebelumnya untuk kebutuhan instalasi
+    apt -y remove grep coreutils lzip tar wget util-linux dialog
+    apt -y autoremove
     echo "OK ..."
     sleep 1
     CARA_PAKAI
