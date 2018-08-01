@@ -157,7 +157,7 @@ INSTALL_DEVEL () {
 INSTALL_STATER () {
     clear
     echo "Memasang script pemicu ..."
-    wget -q --show-progress -P $HOME/../usr/bin/ https://github.com/dhocnet/termux/raw/master/scripts/launcher/slackwarego
+    wget -c -q --show-progress -P $HOME/../usr/bin/ https://github.com/dhocnet/termux/raw/master/scripts/launcher/slackwarego
     chmod +x $HOME/../usr/bin/slackwarego
     echo "nameserver 8.8.8.8" > $HOME/slackware/etc/resolv.conf
     echo "OK ..."
