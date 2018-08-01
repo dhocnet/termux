@@ -35,12 +35,7 @@ SETUP_MULAI () {
     then
         SETUP_BATAL
     else
-        if [ -d $HOME/slackware ]
-        then
-            SETUP_RESUME
-        else
-            SETUP_TERMUX
-        fi
+        SETUP_TERMUX
     fi
 }
 
@@ -48,14 +43,15 @@ SETUP_RESUME () {
     clear
     echo "Terdeteksi berkas slackware di sistem folder. Apakah Anda ingin melanjutkan proses instalasi?\n
     Y - Lanjutkan
-    N - Install baru (hapus instalasi lama)"
+    N - Install baru (hapus instalasi lama)\n"
     read -p 'Lanjutkan atau install baru [Y/n]? ' SET_RES
     if [ $SET_RES = "n" ]
     then
         clear
         echo "Menghapus instalasi lama ..."
         sleep 1
-        rm -rf $HOME/slackware
+        chmod -R a+rw $HOME/slackware/usr/ 2> /dev/null
+        rm -rf $HOME/slackware 2> /dev/null
         echo "OK."
         sleep 2
         SETUP_TERMUX
@@ -63,7 +59,7 @@ SETUP_RESUME () {
         clear
         echo "Pilih tipe instalasi untuk dilanjutkan\n
         1) Lanjutkan instalasi miniroot (default)
-        2) Upgrade Miniroot ke Development"
+        2) Upgrade Miniroot ke Development\n"
         read -p 'Lanjutkan atau upgrade [1/2]? ' SET_UP
         if [ $SET_UP = "2" ]
         then
@@ -186,19 +182,23 @@ sleep 2
 SELECT_ARCH=`uname -m`
 if [ $SELECT_ARCH == 'armv7l' ]
 then
-    echo "\nTerdeteksi arsitektur ponsel; $SELECT_ARCH"
+    echo "Terdeteksi arsitektur ponsel; $SELECT_ARCH"
     ARCH_SELECT="slackwarearm/slackwarearm-current/slackware"
-    sleep 2
-    SETUP_MULAI
+    sleep 1
 elif [ $SELECT_ARCH == "aarch64" ]
 then
-    echo "\nTerdeteksi arsitektur ponsel: $SELECT_ARCH"
+    echo "Terdeteksi arsitektur ponsel: $SELECT_ARCH"
     ARCH_SELECT="slarm64/slarm64-current/slarm64"
-    sleep 2
-    SETUP_MULAI
+    sleep 1
 else
-    echo "\nArsitektur ponsel belum didukung!\nArsitektur: $SELECT_ARCH"
+    echo "Arsitektur ponsel belum didukung!\nArsitektur: $SELECT_ARCH"
     sleep 3
     SETUP_BATAL
 fi
 
+if [ -d $HOME/slackware ]
+then
+    SETUP_RESUME
+else
+    SETUP_MULAI
+fi
