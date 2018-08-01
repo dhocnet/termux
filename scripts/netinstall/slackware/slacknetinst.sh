@@ -164,7 +164,6 @@ INSTALL_STATER () {
     clear
     echo "Membersihkan sisa-sisa instalasi ..."
     sleep 1
-    chmod -R a+rw $HOME/slackware/usr/*
     rm -vrf $HOME/slackware/tmp/*
     echo "OK ..."
     sleep 1
@@ -178,8 +177,8 @@ CARA_PAKAI () {
     Info    : mongkee@gmail.com
     Blog    : https://blog.dhocnet.work
     Proyek  : https://github.com/dhocnet/termux\n
-    01 Aggustus 2018, Denpasar, Bali\n\n
-    Untuk menjalankan, gunakan perintah: slackwarego\n\n"
+    01 Aggustus 2018, Denpasar, Bali\n
+    Untuk menjalankan, gunakan perintah: slackwarego\n"
 }
 
 clear
