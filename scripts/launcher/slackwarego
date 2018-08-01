@@ -3,7 +3,7 @@
 unset LD_PRELOAD
 proot \
     --link2symlink \
-    -O \
+    -0 \
     -r $HOME/slackware \
     -b /dev/ \
     -b /sys/ \
@@ -11,7 +11,7 @@ proot \
     -b /storage/ \
     -b $HOME \
     -w /root \
-    /bin/env/ \
+    $HOME/slackware/bin/env \
     -i HOME=/root \
     TERM="$TERM" \
     PS1='[root@slackware \w]# ' \
