@@ -115,7 +115,7 @@ INSTALL_DEFAULT () {
     $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/*.t?z 2> /dev/null
     echo "Memeriksa pilihan Development ..."
     sleep 1
-    if [ -e $HOME/slackware/tmp/insDEV.y ]
+    if [ -f $HOME/slackware/tmp/insDEV.y ]
     then
         echo "Ditemukan!\nMelanjutkan instalasi paket Development ..."
         rm $HOME/slackware/tmp/insDEV.y
@@ -136,8 +136,10 @@ INSTALL_DEVEL () {
     echo "OK.\n\nMengunduh paket Development:"
     chmod +x $WGET_P/../{removepkg,upgradepkg}
     sleep 1
+    apt -y install lftp
     for PKG_DEVDL in $PKG_DEVDIR ; do
-        wget -c -t 0 -r -np -nd -q --show-progress -T 10 -w 5 -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
+        #wget -c -t 0 -r -np -nd -q --show-progress -T 10 -w 5 -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
+        lftp -c 'open ftp://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL ; mirror -c -e $WGET_P'
     done
     echo "OK.\nMemasang paket Development:"
     sleep 1
