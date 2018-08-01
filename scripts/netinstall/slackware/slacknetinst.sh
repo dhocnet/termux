@@ -8,6 +8,7 @@
 # Kode sumber   : https://github.com/dhocnet/termux/scripts/
 #
 # Tanggal       : 31 Juli 2018
+#               : 01 Agustus 2018
 
 # mengaktifkan teks blinkblink - text formating
 shopt -s xpg_echo
@@ -139,11 +140,17 @@ INSTALL_STATER () {
 
 CARA_PAKAI () {
     clear
-    echo "SELAMAT! Anda telah berhasil memasang Slackware Linux (current-$SELECT_ARCH) di perangkat Android.\n\nUntuk menjalankan, gunakan perintah: startslack\n\n"
+    echo "SELAMAT! Anda telah berhasil memasang Slackware Linux (current-$SELECT_ARCH) di perangkat Android.\n\n
+    Oleh    : mongkeelutfi\n
+    Info    : mongkee@gmail.com\n
+    Blog    : https://blog.dhocnet.work\n
+    Proyek  : https://github.com/dhocnet/termux\n\n
+    01 Aggustus 2018, Denpasar, Bali\n\n
+    Untuk menjalankan, gunakan perintah: startslack\n\n"
 }
 
 clear
-echo "\nSlackware ARM - NetInstall\nInfo: https://github.com/dhocnet/termux/"
+echo "\nSlackware ARM - NetInstall\n-> https://github.com/dhocnet/termux/"
 sleep 2
 
 SELECT_ARCH=`uname -m`
