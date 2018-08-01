@@ -87,7 +87,10 @@ INSTALL_DEFAULT () {
     echo "OK."
     echo "Memasang sistem dasar Slackware miniroot ..."
     sleep 2
-    $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/*.t?z
+    # buang pesan error yang timbul karena perintah perintah dari installscript doinst.sh
+    # biasanya masalah yang timbul karena kesalahan chown fulan.binfulan atau perintah chroot
+    # yang tidak terdapat pada termux environment
+    $INSTALL_SYS --terse --root $HOME/slackware/ $WGET_P/*.t?z 2> /dev/null
     echo "Memeriksa pilihan Development ..."
     sleep 1
     if [ -e $HOME/slackware/tmp/insDEV.y ]
@@ -117,7 +120,7 @@ INSTALL_DEVEL () {
     echo "OK.\nMemasang paket Development:"
     sleep 1
     ROOT=$HOME/slackware
-    $UPGRADE_SYS --install-new $WGET_P/*.t?z
+    $UPGRADE_SYS --install-new $WGET_P/*.t?z 2> /dev/null
     echo "\n\nInstalasi paket Development selesai.\nMelanjutkan finishing ..."
     sleep 1
     INSTALL_STATER
