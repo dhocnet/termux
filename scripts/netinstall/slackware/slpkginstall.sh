@@ -11,13 +11,13 @@
 # Agustus, 01 2018
 shopt -s xpg_echo
 
-SBO_NOW=https://slackbuilds.org/slackbuilds/14.2/system/slpkg.tar.gz
+SBO_NOW="https://slackbuilds.org/slackbuilds/14.2/system/slpkg.tar.gz"
 
 # menentukan repositori armv7l (32bit) atau aarch64 (64bit)
 ARCH_NOW=$(uname -m)
 if [ $ARCH_NOW = "aarch64" ]
 then
-    NEW_REPO=https://mirrors.slackware.bg/slarm64/slarm64-current/
+    NEW_REPO="https://mirrors.slackware.bg/slarm64/slarm64-current/"
 fi
 # membuat direktori konstruksi
 echo "Menyiapkan kebutuhan instalasi ..."
@@ -27,7 +27,6 @@ then
 fi
 sleep 1
 # mengunduh pemaket slpkg
-WGETFLAGS="--no-check-certificate" slackpkg -dialog=off -default_answer=y install tar
 echo "Mengunduh script pemaket ..."
 cd /tmp/slpkg
 wget -c -t 0 -T 10 -w 5 -q --show-progress $SBO_NOW
