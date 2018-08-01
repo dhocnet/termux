@@ -10,5 +10,5 @@ Script sederhana untuk instalasi Slackware Linux di Android menggunakan Termux e
 - - Miniroot (sekitar 370MB penggunaan disk)
 - - Development (sekitar 3.6GB penggunaan disk)
 
-Catatan:
+## Catatan:
 - Instalasi Development belum di coba!
