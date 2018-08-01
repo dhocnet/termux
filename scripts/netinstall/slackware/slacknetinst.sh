@@ -164,6 +164,7 @@ INSTALL_STATER () {
     clear
     echo "Membersihkan sisa-sisa instalasi ..."
     sleep 1
+    chmod -R a+rw $HOME/slackware/usr/*
     rm -vrf $HOME/slackware/tmp/*
     echo "OK ..."
     sleep 1
