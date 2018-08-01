@@ -129,6 +129,46 @@ INSTALL_STATER () {
     rm -vrf $HOME/slackware/tmp/*
     echo "OK ..."
     sleep 1
+    SLPKG_Q
+}
+
+SLPKG_Q () {
+    clear
+    echo "Apakah Anda ingin memasang program SLPKG?\nSLPKG berguna untuk memasang program dari SlackBuilds dan berbagai repositori lainnya\n"
+    read -p 'Install slpkg [Y/n]? ' slpkg_n
+    if [ $slpkg_n = "n" ]
+    then
+        echo "SLPKG tidak dipasang!\n"
+        sleep 2
+        CARA_PAKAI
+    else
+        SLPKG_INS
+    fi
+}
+
+SLPKG_INS () {
+    clear
+    echo "Memasang slpkg ..."
+    wget -c -t 0 -q --show-progress -P $WGET_DL/../ $INSTALLPKG_DL/slpkginstall.sh
+    sleep 2
+    unset LD_PRELOAD
+    proot \
+        --link2symlink \
+        -0 \
+        -r $HOME/slackware \
+        -b /dev/ \
+        -b /sys/ \
+        -b /proc/ \
+        -b /storage/ \
+        -b $HOME \
+        -w /root \
+        $HOME/slackware/bin/env \
+        -i HOME=/root \
+        TERM="$TERM" \
+        PS1='[root@slackware \w]# ' \
+        LANG=en_US.UTF-8 \
+        PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+        /bin/bash --login /tmp/slpkginstall.sh
     CARA_PAKAI
 }
 
