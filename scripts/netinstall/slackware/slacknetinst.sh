@@ -142,8 +142,8 @@ INSTALL_DEVEL () {
     sleep 1
     apt -y install lftp
     for PKG_DEVDL in $PKG_DEVDIR ; do
-        #wget -c -t 0 -r -np -nd -q --show-progress -T 10 -w 5 -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
-        lftp -c 'open https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/ ; mirror -c -e $WGET_P'
+        wget -c -t 0 -r -np -nd -q --show-progress -T 10 -w 5 -A '.txz' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
+        #lftp -c 'open https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/ ; mirror -c -e $WGET_P'
     done
     echo "OK.\nMemasang paket Development:"
     sleep 1
