@@ -94,6 +94,9 @@
 # Changed $TMP directory to /var/log/setup/tmp, and chmod'ed it 700 to close
 # some security holes.
 
+# Modifikasi untuk penggunaan pada Android env
+ROOT=/data/data/com.termux/files/home/slackware
+
 # Return a package name that has been stripped of the dirname portion
 # and any of the valid extensions (only):
 pkgbase() {
