@@ -89,7 +89,7 @@ SETUP_SELECT () {
     read -p 'Pilihan (default: 1) [1/2]: ' pilih_tipe
     if [ $pilih_tipe = "2" ]
     then
-        touch $HOME/slackware/tmp/insDEV.y
+        echo "1" > $HOME/slackware/tmp/insDEV.y
     fi
     INSTALL_DEFAULT
 }
