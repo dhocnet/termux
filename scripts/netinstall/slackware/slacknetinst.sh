@@ -129,7 +129,7 @@ INSTALL_DEVEL () {
 INSTALL_STATER () {
     clear
     echo "Memasang script pemicu ..."
-    base64 -d < $SCRIPT_PEMICU > $HOME/../usr/bin/startslack
+    base64 -d < $SCRIPT_PEMICU > $HOME/../usr/bin/slackwarego
     chmod +x $HOME/../usr/bin/startslack
     echo "OK ..."
     clear
