@@ -14,7 +14,7 @@
 shopt -s xpg_echo
 
 # paket miniroot
-PKG_MINI="a/aaa_base a/aaa_elflibs a/aaa_terminfo a/acl a/attr a/bash a/tar a/bin a/btrfs-progs a/bzip2 a/coreutils a/dbus a/dcron a/devs a/dialog a/e2fsprogs a/ed a/etc a/file a/findutils a/hostname a/hwdata a/lbzip2 a/lvm2 a/less a/gawk a/gettext a/getty-ps a/glibc-solibs a/glibc-zoneinfo a/gptfdisk a/grep a/gzip a/jfsutils a/inotify-tools a/kmod a/lrzip a/lzip a/lzlib a/pkgtools a/procps-ng a/reiserfsprogs a/shadow a/sed a/sysklogd a/usbutils a/util-linux a/which a/xfsprogs a/xz ap/groff ap/man-db ap/man-pages ap/nano ap/slackpkg d/perl n/openssl n/ca-certificates n/dhcpcd n/gnupg n/lftp n/libmnl n/network-scripts n/nfs-utils n/ntp n/iputils n/net-tools n/iproute2 n/openssh n/rpcbind n/libtirpc n/rsync n/telnet n/traceroute n/wget n/wpa_supplicant n/wireless-tools l/lzo l/libnl3 l/libidn l/libunistring l/mpfr l/ncurses l/pcre"
+PKG_MINI="a/aaa_base a/aaa_elflibs a/aaa_terminfo a/acl a/attr a/bash a/tar a/bin a/btrfs-progs a/bzip2 a/coreutils a/dbus a/dcron a/devs a/dialog a/e2fsprogs a/ed a/etc a/file a/findutils a/hostname a/hwdata a/lbzip2 a/lvm2 a/less a/gawk a/gettext a/getty-ps a/glibc-solibs a/glibc-zoneinfo a/gptfdisk a/grep a/gzip a/jfsutils a/inotify-tools a/kmod a/lrzip a/lzip a/lzlib a/pkgtools a/procps-ng a/reiserfsprogs a/shadow a/sed a/sysklogd a/usbutils a/util-linux a/which a/xfsprogs a/xz ap/groff ap/man-db ap/man-pages ap/nano ap/slackpkg d/perl d/python d/python-pip d/python-setuptools n/openssl n/ca-certificates n/dhcpcd n/gnupg n/lftp n/libmnl n/network-scripts n/nfs-utils n/ntp n/iputils n/net-tools n/iproute2 n/openssh n/rpcbind n/libtirpc n/rsync n/telnet n/traceroute n/wget n/wpa_supplicant n/wireless-tools l/lzo l/libnl3 l/libidn l/libunistring l/mpfr l/ncurses l/pcre"
 
 # slackware pkgtools modifikasi untuk digunakan pada termux
 INSTALLPKG_DL="https://raw.githubusercontent.com/dhocnet/termux/master/scripts/netinstall/slackware"
@@ -143,7 +143,7 @@ INSTALL_DEVEL () {
     apt -y install lftp
     for PKG_DEVDL in $PKG_DEVDIR ; do
         #wget -c -t 0 -r -np -nd -q --show-progress -T 10 -w 5 -A '.t{g,x}z' -P $WGET_P https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL/
-        lftp -c 'open ftp://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL ; mirror -c -e $WGET_P'
+        lftp -c 'open https://mirrors.slackware.bg/$ARCH_SELECT/$PKG_DEVDL ; mirror -c -e $WGET_P'
     done
     echo "OK.\nMemasang paket Development:"
     sleep 1
