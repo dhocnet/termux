@@ -180,7 +180,7 @@ CARA_PAKAI () {
     Info    : mongkee@gmail.com
     Blog    : https://blog.dhocnet.work
     Proyek  : https://github.com/dhocnet/termux\n
-    01 Aggustus 2018, Denpasar, Bali\n
+    01 Agustus 2018, Denpasar, Bali\n
     Untuk menjalankan, gunakan perintah: slackwarego\n"
 }
 
