@@ -1,0 +1,4 @@
+export DISPLAY=:0
+export TMPDIR=/tmp
+export XDG_RUNTIME_DIR=/tmp/XDG
+export XKB_CONFIG_ROOT=/usr/share/X11/xkb
