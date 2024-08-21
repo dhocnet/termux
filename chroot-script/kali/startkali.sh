@@ -1,5 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+### KALI NETHUNTER CHROOT LAUNCHER ###
+#
+# Versi  : 0.01
+# Oleh   : dhocnet <desktop.hobbie@gmail.com>
+# - https://dhocnet.work
+# - https://youtube.com/@dhocnet
+# - https://youtube.com/@HotPrendRoom
+#
+# Diubah: 21/08/2024
+
 # disarankan hanya user biasa yang menjalankan
 # script chroot kali linux
 if [ "$(whoami)" = "root" ]
@@ -20,6 +30,11 @@ su -c "$BBX mount --bind /dev $KALIROOT/dev"
 su -c "$BBX mount --bind /dev/pts $KALIROOT/dev/pts"
 su -c "$BBX mount --bind /proc $KALIROOT/proc"
 su -c "$BBX mount --bind /sys $KALIROOT/sys"
+
+if [ ! -e "$KALIROOT/dev/shm" ]
+then
+  su -c "mkdir $KALIROOT/dev/shm"
+fi
 
 su -c "$BBX mount -t tmpfs -o size=256M tmpfs $KALIROOT/dev/shm"
 
