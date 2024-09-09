@@ -9,6 +9,7 @@
 # - https://youtube.com/@HotPrendRoom
 #
 # Diubah: 21/08/2024
+#         09/09/2024
 
 # disarankan hanya user biasa yang menjalankan
 # script chroot kali linux
