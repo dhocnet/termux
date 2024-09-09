@@ -32,13 +32,6 @@ su -c "$BBX mount --bind /dev/pts $KALIROOT/dev/pts"
 su -c "$BBX mount --bind /proc $KALIROOT/proc"
 su -c "$BBX mount --bind /sys $KALIROOT/sys"
 
-if [ ! -e "$KALIROOT/dev/shm" ]
-then
-  su -c "mkdir $KALIROOT/dev/shm"
-fi
-
-su -c "$BBX mount -t tmpfs -o size=256M tmpfs $KALIROOT/dev/shm"
-
 # start x11 server
 termux-x11 :0 -ac &
 
@@ -50,7 +43,6 @@ pkill -9 app_process
 
 # lepas tempelan sistem
 su -c "umount -f $KALIROOT/dev/pts"
-su -c "umount -f $KALIROOT/dev/shm"
 su -c "umount -f $KALIROOT/dev"
 su -c "umount -f $KALIROOT/proc"
 su -c "umount -f $KALIROOT/sys"
