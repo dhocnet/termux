@@ -21,8 +21,8 @@ fi
 # setup lingkungan chroot
 BBX="$PREFIX/bin/busybox"
 KALIROOT="/data/data/com.termux/files/kali-arm64"
-XDG_RUNTIME_DIR=$KALIROOT/tmp/XDG
-TMPDIR=/$KALIROOT/tmp
+TMPDIR="$KALIROOT/tmp"
+XDG_RUNTIME_DIR="$KALIROOT/tmp/XDG"
 
 # tempel berkas sistem ke berkas chroot
 su -c "$BBX mount -o remount,dev,suid /data"
@@ -42,7 +42,7 @@ su -c "$BBX mount -t tmpfs -o size=256M tmpfs $KALIROOT/dev/shm"
 termux-x11 :0 -ac &
 
 # chroot ke kali linux
-su -c "$BBX chroot $KALIROOT /bin/su"
+su -c "$BBX chroot $KALIROOT /bin/su - kali"
 
 # matikan servis x11
 pkill -9 app_process
