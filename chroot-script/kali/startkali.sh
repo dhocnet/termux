@@ -36,7 +36,7 @@ su -c "$BBX mount --bind /sys $KALIROOT/sys"
 termux-x11 :0 -ac &
 
 # chroot ke kali linux
-su -c "$BBX chroot $KALIROOT /bin/su - kali"
+su -c "$BBX chroot $KALIROOT /bin/su"
 
 # matikan servis x11
 pkill -9 app_process
