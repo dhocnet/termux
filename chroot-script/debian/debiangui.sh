@@ -17,6 +17,11 @@ pacmd load-module \
   auth-anonymous=1
 
 # memulai debian dengan GUI
+# default script ini menjalankan desktop LXQT
+# jika kamu menggunakan desktop lain, silahkan disesuaikan
+# dengan mengganti "startlxqt" dengan startup desktop kalian.
+# misalnya dengan "startlxde" untuk desktop LXDE
+# atau "startxfce" jika menggunakan desktop XFCE4
 proot-distro login debian \
   # hilangkan tanda pagar dibawah ini, lalu ganti username
   # dengan nama user kamu, jika ada.
