@@ -8,10 +8,8 @@ Untuk menggunakan script peluncur ini, kamu harus memasang **Termux-X11 App** da
 
 Berikut ini adalah cara memasang `pulseaudio` dan `file` melalui Termux:
 
-`
-~$ apt update && apt -y upgrade
-~$ apt -y install pulseaudio file
-`
+`~$ apt update && apt -y upgrade`
+`~$ apt -y install pulseaudio file`
 
 ## VIDEO LANGKAH-LANGKAHNYA
 
