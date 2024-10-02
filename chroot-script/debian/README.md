@@ -1,6 +1,6 @@
 # DEBIAN GUI LAUNCHER
 
-debiangui.sh adalah script peluncur yang akan menjalankan Debian Linux langsung ke mode GUI melalui Termux.
+`debiangui.sh` adalah script peluncur yang akan menjalankan Debian Linux langsung ke mode GUI melalui Termux.
 
 Untuk menggunakan script peluncur ini, kamu harus memasang **Termux-X11 App** dari: https://github.com/termux/termux-x11, `pulseaudio`, dan `file`.
 
@@ -12,7 +12,13 @@ Berikut ini adalah cara memasang `pulseaudio` dan `file` melalui Termux:
 
 `~$ apt -y install pulseaudio file`
 
-## VIDEO LANGKAH-LANGKAHNYA
+## MENJALANKAN DEBIANGUI.SH
+
+Setelah semua kondisi diatas terpenuhi, `debiangui.sh` dapat dijalankan dengan perintah:
+
+`~$ bash debiangui.sh`
+
+## TONTON VIDEONYA
 
 Tonton video langkah-langkah cara melakukannya disini: https://youtu.be/nSQIS7gMXlM
 
