@@ -17,8 +17,6 @@ pacmd load-module \
   auth-anonymous=1
 
 # memulai debian dengan GUI
-# jika memiliki usee biasa, tambahkan: --user namauser \
-# diatas baris --shared-tmp
 proot-distro login debian \
   # hilangkan tanda pagar dibawah ini, lalu ganti username
   # dengan nama user kamu, jika ada.
