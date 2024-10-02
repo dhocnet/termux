@@ -18,7 +18,15 @@ Setelah semua kondisi diatas terpenuhi, `debiangui.sh` dapat dijalankan dengan p
 
 `~$ bash debiangui.sh`
 
-## TONTON VIDEONYA
+## PENGATURAN
 
-Tonton video langkah-langkah cara melakukannya disini: https://youtu.be/nSQIS7gMXlM
+Secara default, `debiangui.sh` akan menggunakan user `root` saat login.
+
+Jika kalian telah menyiapkan user biasa pada Debian Linux, maka silahkan rubah isi script peluncur sesuai dengan petunjuk yang ada didalamnya dengan menambah parameter: `--user [namauser] \`.
+
+Tonton cara menambah user baru pada Debian Linux disini: https://youtu.be/FzuVXj0yH8c
+
+## VIDEO DEMONSTRASI
+
+Tonton video demonstrasinya disini: https://youtu.be/nSQIS7gMXlM
 
