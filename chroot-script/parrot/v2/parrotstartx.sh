@@ -10,7 +10,7 @@
 #
 
 #
-# Dimodifikasi untuk chroot di lingkungan Parrot OS
+# Dimodifikasi untuk chroot Parrot OS HaPlay GO proto-3000
 #
 
 function BOOT_MENU() {
@@ -37,7 +37,7 @@ function BOOT_LINUX() {
   XDG_RUNTIME_DIR="$TMPDIR/XDG"
   # internal storage
   BINDIN="/storage/emulated/0"
-  # sdcard
+  # sdcard: sesuaikan nama folder dengan mount point sdcard
   BINDEX="/storage/79dfcd53-3402-493d-a590-bd82a79d47bf"
 
   # kaitkan img file ke loop device
