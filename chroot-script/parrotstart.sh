@@ -1,15 +1,33 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# lepas ikatan dengan termux
+#
+# nama: parrotstart.sh
+# versi: 0.1
+# oleh: dhocnet
+# kontak: dhocnet@gmail.com
+# situs web: dhocnet.work
+#
+# script ini digunakan dalam video youtube https://youtube.com/watch?v=ygKkQ4a3oUU
+# sebagai sarana demonstrasi metode chroot melalui file raw disk img pada smartphone
+# jadul yang memiliki penyimpanan internal dibawah 64GB
+#
+
+# lepas ikatan dengan termux loader
 unset LD_PRELOAD
+
 # tentukan tujuan mounting
 ROOTFS="$PREFIX/var/run/parrot-running-session"
-# folder ekstra konfigurasi termux-x11
+
+# folder ekstra konfigurasi dan sesi termux-x11
 TMPDIR="$PREFIX/tmp"
 XDG_RUNTIME_DIR="$TMPDIR/XDG"
-# internal storage
+
+# internal storage untuk di binding
 BINDIN="/storage/emulated/0"
-# sdcard
+
+# sdcard untuk di binding
+# catatan: sesuaikan nama folder mount point sdcard dengan perintah lsblk
+# atau df -h | grep fuse
 BINDEX="/storage/79dfcd53-3402-493d-a590-bd82a79d47bf"
 
 # kaitkan img file ke loop device
