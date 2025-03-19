@@ -6,15 +6,15 @@
 # By: Heru N. <desktop.hobbie@gmail.com>
 # - https://dhocnet.work
 # - https://youtube.com/@dhocnet
-# - https://youtube.com/@HotPrendRoom
+# - https://youtube.com/@dhocnetworkbench
 #
 
 #
-# Dimodifikasi untuk chroot Parrot OS HaPlay GO proto-3000
+# Dimodifikasi untuk chroot Parrot OS pada HaPlay GO proto-3000
 #
 
 function BOOT_MENU() {
-  BOOT=$(dialog --backtitle "Termux Loader for Parrot Security OS" \
+  BOOT=$(dialog --backtitle "HaPlay GO proto-3000 - chroot Loader" \
     --title "Parrot OS Boot Menu" \
     --menu "Choose boot mode." 12 45 25 \
       1 "Parrot OS Text Session" \
