@@ -29,6 +29,7 @@ proot-distro login debian \
   --shared-tmp \
   -- /bin/bash -c " \
     export PULSE_SERVER=tcp:127.0.0.1
-    termux-x11 :0 -xstartup \"dbus-run-session startlxqt\"" &&
+    termux-x11 :0 -xstartup \
+    "dbus-run-session startlxqt\"" &&
 
 exit 1
