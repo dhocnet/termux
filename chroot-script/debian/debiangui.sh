@@ -16,6 +16,9 @@ pacmd load-module \
   auth-ip-acl=127.0.0.1 \
   auth-anonymous=1
 
+# start x11 server
+termux-x11 :0 -ac &
+
 # memulai debian dengan GUI
 # default script ini menjalankan desktop LXQT
 # jika kamu menggunakan desktop lain, silahkan disesuaikan
@@ -27,8 +30,8 @@ proot-distro login debian \
   # dengan nama user kamu, jika ada.
   #--user username \
   --shared-tmp \
-  -- /bin/bash -c " \
-    export PULSE_SERVER=tcp:127.0.0.1
-    termux-x11 :0 -xstartup \"dbus-run-session startlxqt\"" &&
+  -- /bin/bash -c "export PULSE_SERVER=tcp:127.0.0.1
+    dbus-run-session startlxqt" &&
 
+pkill -9 app_process
 exit 1
